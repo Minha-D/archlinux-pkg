@@ -1,0 +1,3 @@
+crypttab_entry="root"
+distro_name="Manjaro-ARM"
+distro_prefix="mnjro"

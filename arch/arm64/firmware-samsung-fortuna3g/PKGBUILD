@@ -1,0 +1,39 @@
+# Maintainer: MinhaD <minhazul.ctg123@gmail.com>
+pkgname=firmware-samsung-fortuna3g
+pkgver=1
+pkgrel=0
+pkgdesc="Android Proprietary signed Firmware for wlan/GPU for fortuna3g/fortunaxx3g"
+arch=('aarch64')
+license=('proprietary')
+source=('WCNSS_qcom_wlan_nv.bin'
+	'WCNSS_qcom_cfg.ini'
+	'WCNSS_cfg.dat'
+	'a300_pfp.fw'
+	'a300_pm4.fw')
+
+package() {
+# Install wlan prima firmware
+    install -Dm644 "${srcdir}/WCNSS_qcom_wlan_nv.bin" "${pkgdir}/usr/lib/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin"
+
+    install -Dm644 "${srcdir}/WCNSS_qcom_cfg.ini" "${pkgdir}/usr/lib/firmware/wlan/prima/WCNSS_qcom_cfg.ini"
+
+    install -Dm644 "${srcdir}/WCNSS_cfg.dat" "${pkgdir}/usr/lib/firmware/wlan/prima/WCNSS_cfg.dat"
+
+# Install Adreno 306 GPU Firmware
+    install -Dm644 "${srcdir}/a300_pfp.fw" "${pkgdir}/usr/lib/firmware/qcom/a300_pfp.fw"
+
+    install -Dm644 "${srcdir}/a300_pm4.fw" "${pkgdir}/usr/lib/firmware/qcom/a300_pm4.fw"
+
+
+}
+
+sha256sums=('e1b4aa2360d49018e48ea9f0d56888b5ebdc8a99c9127e044a4676a0e652a95c'
+            'ecb58c8548e28a488241fb68204fa7447db40a823b012bd3b8f79c53faadcf86'
+            '66d8aa043111f6bdce04cfb5c8d09d43f65f853506f996da357d89122e0ac1ae'
+            'b6e66400d46d52dc343d370b94362d564a765994bda47dc026961dd47a9ca7a9'
+            'f78c57e879e96a2c0ceeea31dbd30f7f1d4526f9c876e80481c654f08daaecd3')
+
+
+
+
+

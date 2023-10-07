@@ -1,0 +1,22 @@
+# Maintainer: MinhaD <minhazul.ctg123@gmail.com>
+pkgname=mkbootimg
+pkgver=1
+pkgrel=0
+pkgdesc="Create and Unpack Android bootimages"
+arch=('aarch64')
+license=('GPL')
+source=('mkbootimg'
+	'unpackbootimg')
+
+package() {
+# Install binares in /usr/bin
+    install -Dm755 "${srcdir}/mkbootimg" "${pkgdir}/usr/bin/mkbootimg"
+    install -Dm755 "${srcdir}/mkbootimg" "${pkgdir}/usr/bin/mkbootimg-osm0sis"
+
+    install -Dm755 "${srcdir}/unpackbootimg" "${pkgdir}/usr/bin/unpackbootimg"
+
+
+}
+
+sha256sums=('253a53285271c295f5c1d47597732462f1004eb8031d5a84c1c953de5b4f0d3e'
+            'ad04e2c3e0005c3aa2fe2b717bc7244b4828cdafa3a824aee8c3b3a9d301ed7d')

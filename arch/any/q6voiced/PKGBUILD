@@ -1,0 +1,29 @@
+# Maintainer: Minecrell <minecrell@minecrell.net>
+pkgname=q6voiced
+pkgver=0_git20210408
+_commit="a75518e1ddf44971b1181e12c328dd250b62962a"
+pkgrel=0
+pkgdesc="Enable q6voice audio when call is performed with oFono/ModemManager"
+url="https://github.com/msm8916-mainline/linux"
+arch=("any")
+license=("MIT")
+install='service.install'
+makedepends=("tinyalsa" "dbus")
+source=("https://gitlab.com/postmarketOS/q6voiced/-/archive/$_commit/q6voiced-$_commit.tar.gz"
+        "q6voiced.service")
+
+builddir="$srcdir/q6voiced-$_commit"
+
+build() {
+  cd "q6voiced-$_commit"
+  gcc -o q6voiced q6voiced.c -I/usr/include/dbus-1.0/ -I/usr/lib/dbus-1.0/include -ltinyalsa -ldbus-1
+}
+
+package() {
+  install -Dm755 "$srcdir/q6voiced-$_commit"/q6voiced "$pkgdir/usr/bin/q6voiced"
+  install -Dm755 "$srcdir/q6voiced.service" "$pkgdir/usr/lib/systemd/system/q6voiced.service"
+}
+
+sha256sums=('8ac7b7acd9785f711c4a7c0cd8953d2b14381e175b65f496f4125c5bd203c58e'
+            'd4d4954e5073f18e69e3a1a0ff2d002e61ecab8513aa68310ff9637fee9a1cbf')
+
