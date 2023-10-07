@@ -1,0 +1,18 @@
+pkgname=fix-zinitix
+pkgver=1.0
+pkgrel=1
+pkgdesc="Script to fix zinitix"
+arch=('any')
+url="https://github.com/Minha-D"  # Replace with the actual URL if available
+install='service.install'
+license=('MIT')
+source=('fix-zinitix.sh'
+	'fix-zinitix.service')
+package() {
+    install -Dm755 fix-zinitix.sh "${pkgdir}/usr/bin/fix-zinitix"
+    install -Dm644 fix-zinitix.service "${pkgdir}/usr/lib/systemd/system/fix-zinitix.service"
+
+}
+
+sha256sums=('12c7bd81de8f07838af14d81e7554f793e8a8e615f10599086b370bc64fccae6'
+            '6d3b1f1cd4b6c0e5cc64166ba1723d5481c9bf2b8a4d45ff310ef17b8e7d3ee2')

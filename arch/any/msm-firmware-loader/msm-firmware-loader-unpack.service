@@ -1,0 +1,10 @@
+[Unit]
+Description=Load Firmware Blobs
+Before=systemd-udev-settle.service
+After=local-fs.target
+
+[Service]
+ExecStart=/usr/bin/msm-firmware-loader
+
+[Install]
+WantedBy=sysinit.target

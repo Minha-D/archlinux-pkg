@@ -1,0 +1,11 @@
+[Unit]
+Description=Fix Zinitix Service
+Documentation=https://www.example.com/documentation
+
+[Service]
+ExecStart=/usr/bin/fix-zinitix
+Restart=always
+RestartSec=30s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+post_install() {
+  echo "Minha-Development Framework"
+  echo "Enable Zinitix Touch panel reset script"
+  echo "============================================================================="
+  systemctl enable fix-zinitix.service
+}
+
+post_upgrade() {
+   post_install
+}

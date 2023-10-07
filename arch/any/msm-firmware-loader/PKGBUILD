@@ -1,0 +1,36 @@
+# Maintainer: MinhaD <minhazul.ctg123@gmail.com>
+pkgname=msm-firmware-loader
+pkgver=1
+pkgrel=0
+pkgdesc="postmarketOS MSM Firmware Loader for systemd based distros. Load firmware that is located on dedicated partitions of qcom devices"
+arch=('any')
+license=('GPL')
+install='service.install'
+source=('msm-firmware-loader-unpack.service'
+	'msm-firmware-loader-unpack.sh'
+	'msm-firmware-loader.service'
+	'msm-firmware-loader.sh')
+
+package() {
+# Install the script
+    install -Dm755 "${srcdir}/msm-firmware-loader.sh" "${pkgdir}/usr/bin/msm-firmware-loader"
+
+    install -Dm755 "${srcdir}/msm-firmware-loader-unpack.sh" "${pkgdir}/usr/bin/msm-firmware-loader-unpack"
+
+# Install the service file
+    install -Dm644 "${srcdir}/msm-firmware-loader.service" "${pkgdir}/usr/lib/systemd/system/msm-firmware-loader.service"
+
+    install -Dm644 "${srcdir}/msm-firmware-loader-unpack.service" "${pkgdir}/usr/lib/systemd/system/msm-firmware-loader-unpack.service"
+
+
+	# Make Dir's
+	mkdir -p "$pkgdir"/usr/lib/firmware/msm-firmware-loader
+}
+
+sha256sums=('8ce02b75fdb3ba29531898f5c16edffcb90ddc3ae42e5470c34ce4faf882998a'
+            '7ca35c9a404437dfa13108e354b074535e1c2d382b58519e315fed25b398e4a5'
+            '99742e9a2977921780d257a13d32ed6160568cfca5a0d3ae931e832c7ca68449'
+            '480199a1b7e8832e7261244b8a32461dd240c674ebc5789c6f6b387101e0ba13')
+
+
+

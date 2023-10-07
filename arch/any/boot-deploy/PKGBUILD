@@ -1,0 +1,28 @@
+# Maintainer: MinhaD <minhazul.ctg123@gmail.com>
+pkgname=boot-deploy
+pkgver=1
+pkgrel=0
+pkgdesc="postmarketOS boot-deploy tool to create boot.img to boot mainline kernel"
+arch=('any')
+license=('GPL')
+source=('os-customization'
+	'boot-deploy-functions.sh'
+	'boot-deploy')
+
+package() {
+# Install the script
+    install -Dm755 "${srcdir}/boot-deploy" "${pkgdir}/usr/bin/boot-deploy"
+
+    install -Dm755 "${srcdir}/boot-deploy-functions.sh" "${pkgdir}/usr/share/boot-deploy/boot-deploy-functions.sh"
+
+# Install the os-customization file
+    install -Dm644 "${srcdir}/os-customization" "${pkgdir}/usr/share/boot-deploy/os-customization"
+
+}
+
+sha256sums=('2de017c4edd80018f0260833a74d4649629832e7b7f92036fbd1b0d7c51937c3'
+            '1762cf7f66700c9c989a036adf1caa3a51e0663a56ce3cd174741de6808468c7'
+            '2b2c44a1a241984a82c32f7b890e3e4118092a6d6996cb6c2fd2f17f7a598629')
+
+
+
