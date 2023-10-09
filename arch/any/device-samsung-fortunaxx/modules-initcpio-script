@@ -1,0 +1,11 @@
+# /etc/initcpio/install/custom-modules
+
+build() {
+  add_runscript
+}
+
+help() {
+  cat <<HELPEOF
+This hook adds custom kernel modules to the initramfs.
+HELPEOF
+}

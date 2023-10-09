@@ -1,0 +1,27 @@
+# Maintainer: MinhaD <minhazul.ctg123@gmail.com>
+pkgname=device-samsung-fortunaxx
+pkgver=1
+pkgrel=0
+pkgdesc="Requred configuration to run GNU/Linux in Samsung Galaxy Grand Prime(fortuna3g,fortunaxx3g)"
+arch=('any')
+license=('GPL')
+source=('deviceinfo'
+        'fortunaxx-modules.hook'
+        'modules-initcpio-script')
+
+package() {
+# Install the script
+    install -Dm755 "${srcdir}/modules-initcpio-script" "${pkgdir}/etc/initcpio/install/fortunaxx-modules"
+# Install hook file
+
+    install -Dm644 "${srcdir}/fortunaxx-modules.hook" "${pkgdir}/etc/initcpio/hooks/fortunaxx-modules.hook"
+
+# Install the deviceinfo
+    install -Dm644 "${srcdir}/deviceinfo" "${pkgdir}/etc/deviceinfo"
+
+
+}
+
+sha256sums=('9340d13d44c8f1b3e0ad60eafe1b8a3637c463b8d7802c50e6aa0da4f0fd3da2'
+            '9ffd5d70c77120295e4de27fe6b2047dd8f5c05824ed7dde1f60d3f3e96ed0a8'
+            '6a879bdc0d76ab87925deaf7c4e51c4cc7e621542bdd84e18568383f71c0d156')
