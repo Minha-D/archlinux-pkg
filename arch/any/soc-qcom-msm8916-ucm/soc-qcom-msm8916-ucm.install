@@ -1,0 +1,13 @@
+post_install() {
+  echo "Minha-Development Framework"
+  echo "Enable UCM2 setup  script"
+  echo "============================================================================="
+  rm -r /usr/share/alsa/ucm2
+  mv /tmp/ucm2/ucm2 /usr/share/alsa/
+
+}
+
+post_upgrade() {
+   post_install
+}
+

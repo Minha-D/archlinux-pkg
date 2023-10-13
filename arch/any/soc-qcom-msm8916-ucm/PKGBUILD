@@ -1,0 +1,24 @@
+# Maintainer: Minhazul Hassan <minhazul.ctg123@gmail.com>
+pkgname=soc-qcom-msm8916-ucm
+pkgver=1.0  # You can set the version as needed
+pkgrel=1
+pkgdesc="Install ALSA configurations for qcom-msm8916 platform"
+arch=('any')
+install=$pkgname.install
+url="https://github.com/Minha-D"
+license=('GPL')
+
+package() {
+  mkdir -p "$pkgdir"/tmp/ucm2
+  # Copy the ucm2 folder from the build directory
+  cp -r "$srcdir/ucm2" "$pkgdir/tmp/ucm2"
+}
+
+# Specify the location of the ucm2 folder in the build directory
+source=('ucm2.tar.gz')
+
+# Add any necessary package-specific dependencies here.
+depends=()
+
+sha256sums=('39c61bde0c0bf5a246e07aac46d770b6792aa3dfd2f94ec7eb14e661a1f92781')
+
