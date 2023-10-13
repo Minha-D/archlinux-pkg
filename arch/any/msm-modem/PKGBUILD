@@ -19,10 +19,10 @@ package() {
     install -Dm644 "${srcdir}/setup-msm-modem.service" "${pkgdir}/usr/lib/systemd/system/setup-msm-modem.service"
 
     # Install the configuration file
-    install -Dm644 "${srcdir}/setup-msm-modem.conf" "${pkgdir}/etc//etc/systemd/system/setup-msm-modem.d/setup-msm-modem.conf"
+    install -Dm644 "${srcdir}/setup-msm-modem.conf" "${pkgdir}/etc/systemd/system/setup-msm-modem.d/setup-msm-modem.conf"
 }
 
 sha256sums=('4d0c292cc877f4dc4c4d8d64d0883637c1375ca33234b757a0140a2f29d1a6e2'
-            'a77ba16ddf5b0afafc115ae2746a1691d510112e0be9520d7086adaa88958173'
-            '9cd44c173253fa10fdd77adebc829488e04383927db3d7917a675be9d2f0c3c0')
+            'aba242977cc88606d2061ff12b4ff67aca3c84178933c6c52ee97adae5ddfac7'
+            'c081c75d3c094183513e6f3ad959ab532855c77e000cffd436d6db7a48536999')
 

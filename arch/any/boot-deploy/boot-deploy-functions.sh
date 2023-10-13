@@ -49,7 +49,7 @@ distro_name=""
 distro_prefix=""
 
 # getopts / get_options set the following 'global' variables:
-kernel_filename=
+kernel_filename="vmlinuz"
 initfs_filename="initramfs-linux.img"
 work_dir="/boot"
 output_dir="/boot"

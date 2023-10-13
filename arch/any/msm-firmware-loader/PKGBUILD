@@ -27,10 +27,10 @@ package() {
 	mkdir -p "$pkgdir"/usr/lib/firmware/msm-firmware-loader
 }
 
-sha256sums=('8ce02b75fdb3ba29531898f5c16edffcb90ddc3ae42e5470c34ce4faf882998a'
+sha256sums=('75407e57e36b1788f5cd9cbab314f7d3e4f3c0c9fabba6fdf71d9671324072d6'
             '7ca35c9a404437dfa13108e354b074535e1c2d382b58519e315fed25b398e4a5'
             '99742e9a2977921780d257a13d32ed6160568cfca5a0d3ae931e832c7ca68449'
-            '480199a1b7e8832e7261244b8a32461dd240c674ebc5789c6f6b387101e0ba13')
+            'b2f36b9aadd4c3523ac1b7a55ffc62781630cffc48fe15e10cd93927b3e76ceb')
 
 
 

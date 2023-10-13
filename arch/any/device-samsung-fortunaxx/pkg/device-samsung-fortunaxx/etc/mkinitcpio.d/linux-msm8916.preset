@@ -1,0 +1,10 @@
+# mkinitcpio preset file for the 'linux-pinephonepro' package
+
+ALL_config="/etc/mkinitcpio-gprime.conf"
+ALL_kver="6.5.2-msm8916"
+
+PRESETS=('default')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux.img"
+#default_options=""

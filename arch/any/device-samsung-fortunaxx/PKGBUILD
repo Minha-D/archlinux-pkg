@@ -6,15 +6,17 @@ pkgdesc="Requred configuration to run GNU/Linux in Samsung Galaxy Grand Prime(fo
 arch=('any')
 license=('GPL')
 source=('deviceinfo'
-        'fortunaxx-modules.hook'
-        'modules-initcpio-script')
+        'linux-msm8916.preset'
+        'mkinitcpio-gprime.conf'
+        'boot-deploy')
 
 package() {
 # Install the script
-    install -Dm755 "${srcdir}/modules-initcpio-script" "${pkgdir}/etc/initcpio/install/fortunaxx-modules"
+    install -Dm644 "${srcdir}/mkinitcpio-gprime.conf" "${pkgdir}/etc/mkinitcpio-gprime.conf"
 # Install hook file
-
-    install -Dm644 "${srcdir}/fortunaxx-modules.hook" "${pkgdir}/etc/initcpio/hooks/fortunaxx-modules.hook"
+    install -Dm755 "${srcdir}/boot-deploy"      "${pkgdir}/etc/initcpio/hooks/boot-deploy"
+# Install kernel preset
+    install -Dm644 "${srcdir}/linux-msm8916.preset" "${pkgdir}/etc/mkinitcpio.d/linux-msm8916.preset"
 
 # Install the deviceinfo
     install -Dm644 "${srcdir}/deviceinfo" "${pkgdir}/etc/deviceinfo"
@@ -23,5 +25,7 @@ package() {
 }
 
 sha256sums=('9340d13d44c8f1b3e0ad60eafe1b8a3637c463b8d7802c50e6aa0da4f0fd3da2'
-            '9ffd5d70c77120295e4de27fe6b2047dd8f5c05824ed7dde1f60d3f3e96ed0a8'
-            '6a879bdc0d76ab87925deaf7c4e51c4cc7e621542bdd84e18568383f71c0d156')
+            'b36162463581671ec8270d70584e554ada01acffdad9ba735f09258578321ad5'
+            '6e0c343e9244b8b1d44ee9ae8072cb70fd7b1f552799274e33051f9d42ab0dbc'
+            '72dd10cea8959110b372eddcd71e1c48a72970a30024bf6a7f92011e49e5a635')
+

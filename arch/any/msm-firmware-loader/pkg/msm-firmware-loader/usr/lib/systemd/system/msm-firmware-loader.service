@@ -1,0 +1,12 @@
+[Unit]
+Description=Load firmware blobs on qcom devices
+Before=systemd-udevd.service
+After=local-fs.target
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/msm-firmware-loader
+
+[Install]
+WantedBy=sysinit.target
