@@ -1,0 +1,46 @@
+# Maintainer: Minhazul Hassan <minhazul.ctg123@gmail.com>
+# Kernel config based on: arch/arm64/configs/msm8939_defconfig
+
+pkgname=linux-qcom-msm8916
+pkgver=6.5.2
+pkgrel=1
+pkgdesc="Mainline kernel fork for Qualcomm MSM8916 devices"
+_commit="702e2551f6a48c3df82212c842a662be41184281"
+c_commit="35503837bf4ba8dd57704aa57eafb2e3cf34768d"
+arch=("aarch64")
+url="https://github.com/msm8916-mainline/linux"
+license=("GPL2")
+makedepends=("bash" "bc" "bison" "findutils" "flex" "openssl" "perl")
+
+source=("https://github.com/Minha-D/linux/archive/$_commit.tar.gz"
+        "https://github.com/Minha-D/cross-compiler/archive/$c_commit.tar.gz"
+        "soc_msm8916_gprime.aarch64")
+
+prepare() {
+        cp "$srcdir/soc_msm8916_gprime.aarch64" "$srcdir/linux-$_commit/.config"
+        }
+
+build() {
+    cd "$srcdir/linux-$_commit"
+    export CROSS_COMPILE="$srcdir/cross-compiler-$c_commit/bin/aarch64-linux-gnu-"
+    unset LDFLAGS
+    make -j"$(nproc)" ARCH="arm64" KBUILD_BUILD_VERSION="$pkgrel-ARCH"
+}
+
+package() {
+  cd "$srcdir/linux-$_commit"
+
+  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 INSTALL_DTBS_PATH="$pkgdir/boot/dtbs" \
+    zinstall modules_install dtbs_install ARCH="arm64" INSTALL_PATH="$pkgdir/boot"
+
+  rm -rf "$pkgdir/usr/lib/modules/*/build" "$pkgdir/usr/lib/modules/*/source"
+  install -Dm644 "$srcdir/linux-$_commit/include/config/kernel.release" "$pkgdir/usr/share/kernel/linux-qcom-msm8916/kernel.release"
+}
+
+sha256sums=('b552c31ad311344692b94a0fe1c74e5c0e4f10c3fd2bf49c6e5c83d969cda928'
+            'f202b8691323a3db3953f27013db545a8238ab171820d72123ce3468cb94bf49'
+            '79cd0f6c4652c3c79d4da911a4e82cccfd76fd5b258afbd8eaa7bffe2e44843c')
+
+
