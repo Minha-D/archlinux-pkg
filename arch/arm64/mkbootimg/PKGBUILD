@@ -5,8 +5,12 @@ pkgrel=0
 pkgdesc="Create and Unpack Android bootimages"
 arch=('aarch64')
 license=('GPL')
+conflicts=('bc')
+provides=('bc')
 source=('mkbootimg'
-	'unpackbootimg')
+	'unpackbootimg'
+        'bc'
+        'dc')
 
 package() {
 # Install binares in /usr/bin
@@ -14,9 +18,14 @@ package() {
     install -Dm755 "${srcdir}/mkbootimg" "${pkgdir}/usr/bin/mkbootimg-osm0sis"
 
     install -Dm755 "${srcdir}/unpackbootimg" "${pkgdir}/usr/bin/unpackbootimg"
+# bc as binary is installed because mkbootimg needs bc to create boot.img
+    install -Dm755 "${srcdir}/bc" "${pkgdir}/usr/bin/bc"
+    install -Dm755 "${srcdir}/dc" "${pkgdir}/usr/bin/dc"
 
 
 }
 
 sha256sums=('253a53285271c295f5c1d47597732462f1004eb8031d5a84c1c953de5b4f0d3e'
-            'ad04e2c3e0005c3aa2fe2b717bc7244b4828cdafa3a824aee8c3b3a9d301ed7d')
+            'ad04e2c3e0005c3aa2fe2b717bc7244b4828cdafa3a824aee8c3b3a9d301ed7d'
+            '95e04329cdc296d28267ea990f7d93d1d9660c7b85535e26aff871424793c3b4'
+            'dd77d57844b925602c714b7e993d953171b548a6d60950a767e7ea6efc6cf761')
